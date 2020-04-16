@@ -9,7 +9,7 @@ export default function SignUpForm({ handleSignupInput, handleSignupSubmit }) {
                 <label><input name="lastName" placeholder="Your last name..." onChange={handleSignupInput}/></label>
                 <label><input name="email" placeholder="Your email..." onChange={handleSignupInput}/></label>
                 <label><input name="password" type="password" placeholder="Your password..." onChange={handleSignupInput}/></label>
-                <button>Sign Up</button>
+                <button>Let's Go!</button>
             </form>
         </div>
     )
