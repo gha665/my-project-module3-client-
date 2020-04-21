@@ -7,7 +7,7 @@ export class AuthProvider extends Component {
   state = {
     currentUser: null,
     formSignup: {
-      username: "",
+    //   username: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -33,7 +33,7 @@ export class AuthProvider extends Component {
       this.setState((prevState) => ({
         ...prevState,
         formSignup: {
-          username: "",
+        //   username: "",
           firstName: "",
           lastName: "",
           email: "",

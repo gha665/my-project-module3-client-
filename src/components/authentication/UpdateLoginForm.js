@@ -17,7 +17,7 @@ export default function SignUpForm({ handleSignupInput, handleSignupSubmit }) {
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
-        <Input
+        {/* <Input
           id="firstName"
           placeholder="Your first name..."
           inputProps={{ "aria-label": "description" }}
@@ -26,21 +26,21 @@ export default function SignUpForm({ handleSignupInput, handleSignupSubmit }) {
           id="lastName"
           placeholder="Your last name..."
           inputProps={{ "aria-label": "description" }}
-        />
+        /> */}
         <Input
           type="email"
-          placeholder="Your email..."
+          placeholder="New email..."
           onChange={handleSignupInput}
           inputProps={{ "aria-label": "description" }}
         />
         <Input
           type="password"
-          placeholder="Your password..."
+          placeholder="New password..."
           onChange={handleSignupInput}
           inputProps={{ "aria-label": "description" }}
         />
         <Button onClick={handleSignupSubmit} variant="outlined" color="primary">
-          Let's Go!
+          Update
         </Button>
       </form>
     </div>

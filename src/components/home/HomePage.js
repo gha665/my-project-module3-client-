@@ -21,6 +21,7 @@ export default function HomePage() {
       <LoginForm />
 
       <h1>PARTYARCH</h1>
+      
       <h3>What's your party?</h3>
 
       <ButtonGroup
@@ -50,6 +51,7 @@ export default function HomePage() {
       </MuiPickersUtilsProvider>
 
       <h6>New to this? Create your profile!</h6>
+
       <SignUpForm />
 
       <footer>

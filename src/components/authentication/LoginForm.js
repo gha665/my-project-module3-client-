@@ -17,17 +17,15 @@ export default function LoginForm({ handleLoginInput, handleLoginSubmit }) {
   return (
     <div>
       <form onSubmit={handleLoginSubmit}>
-        {/* <label><input name="email" placeholder="Your email..." onChange={handleLoginInput}/></label>
-                <label><input name="password" type="password" placeholder="Your password..." onChange={handleLoginInput}/></label> */}
         <Input
-          placeholder="Your email..."
           type="email"
+          placeholder="Your email..."
           onChange={handleLoginInput}
           inputProps={{ "aria-label": "description" }}
         />
         <Input
-          placeholder="Your password..."
           type="password"
+          placeholder="Your password..."
           onChange={handleLoginInput}
           inputProps={{ "aria-label": "description" }}
         />
