@@ -1,6 +1,7 @@
 import React from "react";
 import SignUpForm from "../authentication/SignUpForm";
 import LoginForm from "../authentication/LoginForm";
+import UpdateProfileForm from "../authentication/UpdateProfileForm";
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -21,7 +22,7 @@ export default function HomePage() {
       <LoginForm />
 
       <h1>PARTYARCH</h1>
-      
+
       <h3>What's your party?</h3>
 
       <ButtonGroup
@@ -53,6 +54,8 @@ export default function HomePage() {
       <h6>New to this? Create your profile!</h6>
 
       <SignUpForm />
+
+      {/* <UpdateProfileForm /> */}
 
       <footer>
         <p>Evgenycs Dev Inc 2020</p>

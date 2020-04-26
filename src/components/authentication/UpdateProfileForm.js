@@ -39,6 +39,12 @@ export default function SignUpForm({ handleSignupInput, handleSignupSubmit }) {
           onChange={handleSignupInput}
           inputProps={{ "aria-label": "description" }}
         />
+        <Input
+          type="password"
+          placeholder="Confirm new password..."
+          onChange={handleSignupInput}
+          inputProps={{ "aria-label": "description" }}
+        />
         <Button onClick={handleSignupSubmit} variant="outlined" color="primary">
           Update
         </Button>
