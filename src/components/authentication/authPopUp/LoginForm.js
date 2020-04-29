@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginForm() {
+export default function LoginForm({ handleLoginInput, handleLoginSubmit }) {
   const classes = useStyles();
   return (
     <AuthContext.Consumer>
