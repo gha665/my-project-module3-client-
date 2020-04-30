@@ -14,7 +14,7 @@ import {
 // import "./App.css";
 
 export default function HomePage(props) {
-  console.log("HomePage -> props", props)
+  console.log("HomePage -> props", props);
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
@@ -37,8 +37,12 @@ export default function HomePage(props) {
         <Button>
           <Link to="events/conference">Conference</Link>
         </Button>
-        <Button>Wedding</Button>
-        <Button>Birthday</Button>
+        <Button>
+          <Link to="events/conference">Wedding</Link>
+        </Button>
+        <Button>
+          <Link to="events/conference">Birthday</Link>
+        </Button>
       </ButtonGroup>
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>

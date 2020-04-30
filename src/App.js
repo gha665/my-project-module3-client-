@@ -6,7 +6,10 @@ import { AuthContext } from "./context/Authorization";
 import HomePage from "./components/home/HomePage";
 import PrivatePage from "./components/private/PrivatePage";
 import Conference from "./components/events/Conference";
+import Wedding from "./components/events/Wedding";
+import Birthday from "./components/events/Birthday";
 import "./App.scss";
+
 
 function App() {
   const [storage, setStorage] = useState({});
@@ -55,6 +58,32 @@ function App() {
                     />
                   )}
                   // component={Conference}
+                />
+                <Route
+                  exact
+                  path="/events/wedding"
+                  render={(props) => (
+                    <Wedding
+                      {...props}
+                      user={currentUser}
+                      setStorage={setStorage}
+                      loggedIn={loggedIn}
+                    />
+                  )}
+                  // component={Wedding}
+                />
+                <Route
+                  exact
+                  path="/events/birthday"
+                  render={(props) => (
+                    <Birthday
+                      {...props}
+                      user={currentUser}
+                      setStorage={setStorage}
+                      loggedIn={loggedIn}
+                    />
+                  )}
+                  // component={Birthday}
                 />
               </Switch>
             </Container>

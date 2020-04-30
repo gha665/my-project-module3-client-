@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 
-export default function Conference(props) {
+export default function Birthday(props) {
   const { loggedIn, setStorage, user } = props;
 
   return (
