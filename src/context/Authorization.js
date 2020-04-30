@@ -111,11 +111,11 @@ export class AuthProvider extends Component {
   //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   handleSignupInput = (e) => {
     const { value, name } = e.target;
-    console.log(
-      "AuthProvider -> handleSignupInput -> value, name",
-      value,
-      name
-    );
+    // console.log(
+    //   "AuthProvider -> handleSignupInput -> value, name",
+    //   value,
+    //   name
+    // );
     this.setState((prevState) => ({
       formSignup: {
         ...prevState.formSignup,
@@ -142,10 +142,10 @@ export class AuthProvider extends Component {
   //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   handleLogout = async () => {
     try {
-      console.log("handleLOGOUT");
+      // console.log("handleLOGOUT");
 
       const { message } = await AUTH_SERVICE.logout();
-      console.log("AuthProvider -> isLoggedout -> user", message);
+      // console.log("AuthProvider -> isLoggedout -> user", message);
 
       this.setState({
         message,
@@ -153,7 +153,7 @@ export class AuthProvider extends Component {
       });
     } catch (err) {
       if (err.response && err.response.data) {
-        console.log("MESSAGE", err.response.data.message);
+        // console.log("MESSAGE", err.response.data.message);
 
         this.setState((prevState) => ({
           ...prevState,

@@ -1,5 +1,6 @@
 import React from "react";
 import { AuthContext } from "../../context/Authorization";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
@@ -12,15 +13,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   const classes = useStyles();
   return (
     <AuthContext.Consumer>
       {(context) => {
         console.log(context);
         const { handleLoginSubmit, handleLoginInput, state } = context;
-        const { email, password } = state;
-
+        const { email, password } = state.formLogin;
+        console.log("Login props", props);
         return (
           <div>
             <form onSubmit={handleLoginSubmit}>

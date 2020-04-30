@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import SignUpForm from "../authentication/SignUpForm";
 import LoginForm from "../authentication/LoginForm";
 import UpdateProfileForm from "../authentication/UpdateProfileForm";
+
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -10,7 +13,8 @@ import {
 } from "@material-ui/pickers";
 // import "./App.css";
 
-export default function HomePage() {
+export default function HomePage(props) {
+  console.log("HomePage -> props", props)
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
@@ -30,7 +34,9 @@ export default function HomePage() {
         color="primary"
         aria-label="large outlined primary button group"
       >
-        <Button>Conference</Button>
+        <Button>
+          <Link to="events/conference">Conference</Link>
+        </Button>
         <Button>Wedding</Button>
         <Button>Birthday</Button>
       </ButtonGroup>
