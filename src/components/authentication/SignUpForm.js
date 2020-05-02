@@ -20,7 +20,6 @@ export const SignUpForm = () => {
       {(context) => {
         // console.log("SignUpForm -> context", context);
         const { handleSignupSubmit, handleSignupInput, state } = context;
-        // console.log(state);
         const { firstName, lastName, email, password } = state.formSignup;
 
         return (

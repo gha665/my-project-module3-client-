@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import SignUpForm from "../authentication/SignUpForm";
-import LoginForm from "../authentication/LoginForm";
 import UpdateProfileForm from "../authentication/UpdateProfileForm";
 
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
@@ -64,10 +62,6 @@ export default class PrivatePage extends Component {
             />
           </Grid>
         </MuiPickersUtilsProvider>
-
-        {/* <h6>New to this? Create your profile!</h6>
-
-        <SignUpForm /> */}
 
         <UpdateProfileForm />
 
