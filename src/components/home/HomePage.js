@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import SignUpForm from "../authentication/SignUpForm";
 import LoginForm from "../authentication/LoginForm";
-import UpdateProfileForm from "../authentication/UpdateProfileForm";
+// import UpdateProfileForm from "../authentication/UpdateProfileForm";
 
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
@@ -14,9 +14,8 @@ import {
 // import "./App.css";
 
 export default function HomePage(props) {
-  console.log("HomePage -> props", props);
+  //===================== Event Date Handler ========================
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -38,10 +37,10 @@ export default function HomePage(props) {
           <Link to="events/conference">Conference</Link>
         </Button>
         <Button>
-          <Link to="events/conference">Wedding</Link>
+          <Link to="events/wedding">Wedding</Link>
         </Button>
         <Button>
-          <Link to="events/conference">Birthday</Link>
+          <Link to="events/birthday">Birthday</Link>
         </Button>
       </ButtonGroup>
 

@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.conference {
+  background-color: A8D0E6;
+}
+
+.wedding {
+  background-color: f8e9a1;
+}
+
+.birthday {
+  background-color: f76c6c;
+}

@@ -5,7 +5,7 @@ export default function Wedding(props) {
   const { loggedIn, setStorage, user } = props;
 
   return (
-    <div>
+    <div className="wedding">
       <button>Date</button>
       <button>Location</button>
       <button>Add ons</button>

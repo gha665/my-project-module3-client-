@@ -5,7 +5,7 @@ export default function Birthday(props) {
   const { loggedIn, setStorage, user } = props;
 
   return (
-    <div>
+    <div className="birthday" >
       <button>Date</button>
       <button>Location</button>
       <button>Add ons</button>
