@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+import Location from "../Location";
+import EventsList from "./EventsList";
 
 import "../../App.scss";
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
@@ -10,7 +12,7 @@ import {
 } from "@material-ui/pickers";
 
 export default function Birthday(props) {
-  const { loggedIn, setStorage, user } = props;
+  const { loggedIn, setStorage, user, title, events } = props;
 
   //===================== Event Date Handler ========================
   const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -19,8 +21,8 @@ export default function Birthday(props) {
   };
 
   return (
-    <div className="birthday">
-      <h1>BIRTHDAY</h1>
+    <div className={title}>
+      <h1>{title?.toUpperCase()}</h1>
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container justify="space-around">
@@ -37,10 +39,12 @@ export default function Birthday(props) {
           />
         </Grid>
       </MuiPickersUtilsProvider>
-      <button>Date</button>
-      <button>Location</button>
-      <button>Add ons</button>
+
+      <button>
+        <a href="#location">Location</a>
+      </button>
       <button>Food</button>
+      <button>Add ons</button>
 
       <Link
         to={{
@@ -52,6 +56,14 @@ export default function Birthday(props) {
       >
         CHECK OUT
       </Link>
+
+      <div id={title}>
+        <EventsList events={events}/>
+      </div>
+
+      <div id="location">
+        <Location />
+      </div>
     </div>
   );
 }

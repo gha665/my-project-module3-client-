@@ -17,7 +17,7 @@ export default function LoginForm({ handleLoginInput, handleLoginSubmit }) {
   return (
     <AuthContext.Consumer>
       {(context) => {
-        console.log(context);
+        // console.log(context);
         const { handleLoginSubmit, handleLoginInput, state } = context;
         const { email, password } = state;
 

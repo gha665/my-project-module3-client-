@@ -1,6 +1,7 @@
 import React, { Component, createContext } from "react";
 import { withRouter } from "react-router-dom";
 import AUTH_SERVICE from "../services/AuthService";
+import EVENTS_SERVICE from "../services/EventServices";
 
 export const AuthContext = createContext();
 export class AuthProvider extends Component {
@@ -16,10 +17,23 @@ export class AuthProvider extends Component {
     loggedIn: false,
     isLoading: true,
     message: false,
+    eventsData: null,
   };
 
   componentDidMount = () => {
     this.isLoggedIn();
+    this.getAllEvents();
+  };
+
+  // ================ GET ALL EVENTS from DB
+  getAllEvents = async () => {
+    try {
+      const res = await EVENTS_SERVICE.getEvents();
+      console.log("AuthProvider -> getAllEvents -> res", res);
+      this.setState({ eventsData: res.data.events });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -28,7 +42,7 @@ export class AuthProvider extends Component {
   isLoggedIn = async () => {
     try {
       const { user } = await AUTH_SERVICE.isLoggedIn();
-      console.log("AuthProvider -> isLoggedIn -> user", user);
+      // console.log("AuthProvider -> isLoggedIn -> user", user);
 
       this.setState({
         currentUser: user,
@@ -83,12 +97,12 @@ export class AuthProvider extends Component {
     e.preventDefault();
     try {
       // this.setState({ isLoading: true, message: "Logging in..." });
-      console.log(this.state.formLogin);
+      // console.log(this.state.formLogin);
 
       const {
         data: { user },
       } = await AUTH_SERVICE.login(this.state.formLogin);
-      console.log("AuthProvider -> handleLoginSubmit -> user", user);
+      // console.log("AuthProvider -> handleLoginSubmit -> user", user);
 
       this.setState((prevState) => ({
         ...prevState,
@@ -128,7 +142,7 @@ export class AuthProvider extends Component {
   //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   handleLoginInput = (e) => {
     const { value, name } = e.target;
-    console.log("AuthProvider -> handleLoginInput -> value, name", value, name);
+    // console.log("AuthProvider -> handleLoginInput -> value, name", value, name);
     this.setState((prevState) => ({
       formLogin: {
         ...prevState.formLogin,

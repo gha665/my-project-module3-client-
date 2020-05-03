@@ -6,11 +6,11 @@ import LoginForm from "../authentication/LoginForm";
 // import UpdateProfileForm from "../authentication/UpdateProfileForm";
 
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+// import DateFnsUtils from "@date-io/date-fns";
+// import {
+//   MuiPickersUtilsProvider,
+//   KeyboardDatePicker,
+// } from "@material-ui/pickers";
 // import "./App.css";
 
 export default function HomePage(props) {
@@ -44,7 +44,7 @@ export default function HomePage(props) {
         </Button>
       </ButtonGroup>
 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container justify="space-around">
           <KeyboardDatePicker
             margin="normal"
@@ -58,7 +58,7 @@ export default function HomePage(props) {
             }}
           />
         </Grid>
-      </MuiPickersUtilsProvider>
+      </MuiPickersUtilsProvider> */}
 
       <h6>New to this? Create your profile!</h6>
 
