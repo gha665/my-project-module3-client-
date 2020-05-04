@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import UpdateProfileForm from "../authentication/UpdateProfileForm";
+import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
 
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import SignUpForm from "../authentication/SignUpForm";
-import LoginForm from "../authentication/LoginForm";
+import SignUpForm from "../authentication/forms/SignUpForm";
+import LoginForm from "../authentication/forms/LoginForm";
 // import UpdateProfileForm from "../authentication/UpdateProfileForm";
 
 import { ButtonGroup, Button, Grid } from "@material-ui/core";

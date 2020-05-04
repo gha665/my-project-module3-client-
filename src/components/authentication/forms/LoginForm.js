@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthContext } from "../../context/Authorization";
+import { AuthContext } from "../../../context/Authorization";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";

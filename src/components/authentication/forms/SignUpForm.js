@@ -4,7 +4,7 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import { AuthContext } from "../../context/Authorization";
+import { AuthContext } from "../../../context/Authorization";
 
 const useStyles = makeStyles((theme) => ({
   root: {
