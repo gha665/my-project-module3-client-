@@ -40,9 +40,9 @@ const useStyles = makeStyles((theme) => ({
 export default function HomePage(props) {
   //===================== Event Date Handler ========================
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  // };
 
   return (
     <div>

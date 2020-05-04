@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../context/Authorization";
 import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
 
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
@@ -14,8 +14,8 @@ import {
 export default class PrivatePage extends Component {
   render() {
     // ==================== Page is only displayed when user is logged in ========================
-    const { user } = this.props;
-    const userFromLink = this.props.location.state?.userFromLink;
+    const { currentUser } = this.context.state;
+    // const userFromLink = this.props.location.state?.userFromLink;
 
     //===================== Event Date Handler ========================
     // const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -25,7 +25,7 @@ export default class PrivatePage extends Component {
 
     return (
       <div>
-        <h1>HI, {userFromLink?.firstName}! </h1>
+        <h1>HI, {currentUser?.firstName}! </h1>
 
         <h1>PARTYARCH</h1>
 
@@ -72,3 +72,5 @@ export default class PrivatePage extends Component {
     );
   }
 }
+
+PrivatePage.contextType = AuthContext;

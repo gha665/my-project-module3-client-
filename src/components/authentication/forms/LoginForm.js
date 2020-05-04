@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  input: {
+    margin: theme.spacing(1),
+  },
 }));
 
 export default function LoginForm(props) {
@@ -24,8 +27,9 @@ export default function LoginForm(props) {
         console.log("Login props", props);
         return (
           <div>
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleLoginSubmit} classes={classes.root}>
               <Input
+                className={classes.input}
                 type="email"
                 name="email"
                 placeholder="Your email..."
@@ -34,6 +38,7 @@ export default function LoginForm(props) {
                 inputProps={{ "aria-label": "description" }}
               />
               <Input
+                className={classes.input}
                 type="password"
                 name="password"
                 placeholder="Your password..."

@@ -73,17 +73,20 @@ export class AuthProvider extends Component {
         data: { user },
       } = await AUTH_SERVICE.signup(this.state.formSignup);
 
-      this.setState((prevState) => ({
-        ...prevState,
-        formSignup: {
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        },
-        currentUser: user,
-        loggedIn: true,
-      }));
+      this.setState(
+        (prevState) => ({
+          ...prevState,
+          formSignup: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+          },
+          currentUser: user,
+          loggedIn: true,
+        }),
+        () => this.props.history.push("/privatepage")
+      );
     } catch (err) {
       console.log(err);
       //   this.displayError(err);
@@ -104,16 +107,19 @@ export class AuthProvider extends Component {
       } = await AUTH_SERVICE.login(this.state.formLogin);
       // console.log("AuthProvider -> handleLoginSubmit -> user", user);
 
-      this.setState((prevState) => ({
-        ...prevState,
-        formLogin: {
-          ...prevState.formLogin,
-          email: "",
-          password: "",
-        },
-        currentUser: user,
-        loggedIn: true,
-      }));
+      this.setState(
+        (prevState) => ({
+          ...prevState,
+          formLogin: {
+            ...prevState.formLogin,
+            email: "",
+            password: "",
+          },
+          currentUser: user,
+          loggedIn: true,
+        }),
+        () => this.props.history.push("/privatepage")
+      );
     } catch (err) {
       console.log(err);
       //   this.displayError(err);
