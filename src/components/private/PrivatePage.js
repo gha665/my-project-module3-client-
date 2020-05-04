@@ -47,7 +47,7 @@ export default class PrivatePage extends Component {
           </Button>
         </ButtonGroup>
 
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
               margin="normal"
@@ -61,7 +61,7 @@ export default class PrivatePage extends Component {
               }}
             />
           </Grid>
-        </MuiPickersUtilsProvider>
+        </MuiPickersUtilsProvider> */}
 
         <UpdateProfileForm />
 
