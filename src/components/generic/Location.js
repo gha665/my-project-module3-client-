@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GoogleMaps() {
+export default function Location() {
   const classes = useStyles();
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
