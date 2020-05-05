@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
 import Location from "../Location";
 import EventsList from "./EventsList";
+import MainAuthForm from "../authentication/authPopUp/MainAuthForm";
 
 import "../../App.scss";
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
@@ -46,19 +46,10 @@ export default function Birthday(props) {
       <button>Food</button>
       <button>Add ons</button>
 
-      <Link
-        to={{
-          pathname: "/privatepage",
-          state: {
-            userFromLink: user,
-          },
-        }}
-      >
-        CHECK OUT
-      </Link>
+      <MainAuthForm />
 
       <div id={title}>
-        <EventsList events={events}/>
+        <EventsList events={events} />
       </div>
 
       <div id="location">

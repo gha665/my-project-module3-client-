@@ -4,7 +4,7 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import { AuthContext } from "../../context/Authorization";
+import { AuthContext } from "../../../context/Authorization";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,39 +15,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SignUpForm = () => {
-  // handleSignupInput,
-  // handleSignupSubmit,
-
-  //const classes = useStyles();
-
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = { firstName: "", lastName: "", email: "", password: "" };
-
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
-
-  // handleChange(event) {
-  //   const inputKey = event.target.name;
-  //   const inputValue = event.target.value;
-  //   this.setState({ [inputKey]: inputValue });
-  // }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   const url = "http://localhost:5000/api/auth/signup";
-  //   axios.post(url, this.state).then((res) => console.log("RES", res));
-  // }
-
   return (
     <AuthContext.Consumer>
       {(context) => {
         // console.log("SignUpForm -> context", context);
         const { handleSignupSubmit, handleSignupInput, state } = context;
-        // console.log(state);
-        let { firstName, lastName, email, password } = state.formSignup;
+        const { firstName, lastName, email, password } = state.formSignup;
 
         return (
           <div>

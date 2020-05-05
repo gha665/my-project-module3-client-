@@ -85,7 +85,7 @@ export class AuthProvider extends Component {
           currentUser: user,
           loggedIn: true,
         }),
-        () => this.props.history.push("/privatepage")
+        () => this.props.history.push("/privatepage") // <============ Redirects current user to private page
       );
     } catch (err) {
       console.log(err);
@@ -118,7 +118,7 @@ export class AuthProvider extends Component {
           currentUser: user,
           loggedIn: true,
         }),
-        () => this.props.history.push("/privatepage")
+        () => this.props.history.push("/privatepage") // <============ Redirects current user to private page
       );
     } catch (err) {
       console.log(err);

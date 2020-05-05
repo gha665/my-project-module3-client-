@@ -1,5 +1,6 @@
 import React from "react";
-import { AuthContext } from "../../context/Authorization";
+import { AuthContext } from "../../../context/Authorization";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
@@ -10,21 +11,25 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  input: {
+    margin: theme.spacing(1),
+  },
 }));
 
-export default function LoginForm({ handleLoginInput, handleLoginSubmit }) {
+export default function LoginForm(props) {
   const classes = useStyles();
   return (
     <AuthContext.Consumer>
       {(context) => {
-        // console.log(context);
+        console.log(context);
         const { handleLoginSubmit, handleLoginInput, state } = context;
-        const { email, password } = state;
-
+        const { email, password } = state.formLogin;
+        console.log("Login props", props);
         return (
           <div>
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleLoginSubmit} classes={classes.root}>
               <Input
+                className={classes.input}
                 type="email"
                 name="email"
                 placeholder="Your email..."
@@ -33,6 +38,7 @@ export default function LoginForm({ handleLoginInput, handleLoginSubmit }) {
                 inputProps={{ "aria-label": "description" }}
               />
               <Input
+                className={classes.input}
                 type="password"
                 name="password"
                 placeholder="Your password..."
