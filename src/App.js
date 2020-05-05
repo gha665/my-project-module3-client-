@@ -10,6 +10,7 @@ import DynamicEvent from "./components/events/DynamicEvent";
 // import Wedding from "./components/events/Wedding";
 import "./App.scss";
 
+      
 function App() {
   const [storage, setStorage] = useState({});
 

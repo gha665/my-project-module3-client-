@@ -11,7 +11,9 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
-export default function Birthday(props) {
+import GoogleMaps from "./GoogleLocation";
+
+export default function WhereAndWhen(props) {
   const { loggedIn, setStorage, user, title, events } = props;
 
   //===================== Event Date Handler ========================
@@ -40,9 +42,11 @@ export default function Birthday(props) {
         </Grid>
       </MuiPickersUtilsProvider>
 
-      <button>
+      <GoogleMaps></GoogleMaps>
+
+      {/* <button>
         <a href="#location">Location</a>
-      </button>
+      </button> */}
       <button>Food</button>
       <button>Add ons</button>
 
@@ -51,10 +55,10 @@ export default function Birthday(props) {
       <div id={title}>
         <EventsList events={events} />
       </div>
-
+      {/* 
       <div id="location">
         <Location />
-      </div>
+      </div> */}
     </div>
   );
 }
