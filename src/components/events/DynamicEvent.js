@@ -2,6 +2,8 @@ import React from "react";
 import EventsList from "./EventsList";
 import MainAuthForm from "../authentication/authPopUp/MainAuthForm";
 
+import Cuisine from "../generic/Cuisine";
+import DatePicker from "../generic/DatePicker";
 import Location from "../generic/Location";
 import "../../App.scss";
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
@@ -15,13 +17,15 @@ export default function WhereAndWhen(props) {
   const { loggedIn, setStorage, user, title, events } = props;
 
   //===================== Event Date Handler ========================
- 
 
   return (
     <div className={title}>
       <h1>{title?.toUpperCase()}</h1>
-
-      <Location></Location>
+      <div className="eventContainer">
+        <DatePicker />
+        <Location />
+        <Cuisine />
+      </div>
 
       {/* <button>
         <a href="#location">Location</a>
@@ -31,13 +35,9 @@ export default function WhereAndWhen(props) {
 
       <MainAuthForm />
 
-      <div id={title}>
+      {/* <div id={title}>
         <EventsList events={events} />
-      </div>
-      {/* 
-      <div id="location">
-        <Location />
-      </div> */}
+      </div>  */}
     </div>
   );
 }

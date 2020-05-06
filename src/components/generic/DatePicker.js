@@ -1,15 +1,19 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
 
 import "../../App.scss";
-import { ButtonGroup, Button, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
-function DatePicker({ selectedDate, handleDateChange }) {
+function DatePicker() {
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
