@@ -88,7 +88,7 @@ export class AuthProvider extends Component {
         () => this.props.history.push("/privatepage") // <============ Redirects current user to private page
       );
     } catch (err) {
-      console.log(err);
+      console.log(err.response);
       //   this.displayError(err);
     }
   };

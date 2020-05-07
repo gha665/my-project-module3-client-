@@ -3,13 +3,36 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/Authorization";
 import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
 
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
+
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+
 // import "./App.css";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(5),
+      width: theme.spacing(40),
+      height: theme.spacing(40),
+    },
+  },
+  conference: {
+    backgroundColor: "#a8d0e6",
+    border: "3px solid black",
+  },
+  wedding: {
+    backgroundColor: "#f8e9a1",
+    border: "3px solid black",
+  },
+  birthday: {
+    backgroundColor: "#f76c6c",
+    border: "3px solid black",
+  },
+}));
 
 export default class PrivatePage extends Component {
   render() {
@@ -17,11 +40,7 @@ export default class PrivatePage extends Component {
     const { currentUser } = this.context.state;
     // const userFromLink = this.props.location.state?.userFromLink;
 
-    //===================== Event Date Handler ========================
-    // const [selectedDate, setSelectedDate] = React.useState(new Date());
-    // const handleDateChange = (date) => {
-    //   setSelectedDate(date);
-    // };
+    const classes = useStyles();
 
     return (
       <div>
@@ -31,7 +50,20 @@ export default class PrivatePage extends Component {
 
         <h3>What's your party?</h3>
 
-        <ButtonGroup
+        <div className={classes.root}>
+          <Paper elevation={1} className={classes.conference}>
+            <Link to="events/conference">Conference</Link>
+          </Paper>
+
+          <Paper elevation={1} className={classes.wedding}>
+            <Link to="events/wedding">Wedding</Link>
+          </Paper>
+          <Paper elevation={1} className={classes.birthday}>
+            <Link to="events/birthday">Birthday</Link>
+          </Paper>
+        </div>
+
+        {/* <ButtonGroup
           size="large"
           color="primary"
           aria-label="large outlined primary button group"
@@ -45,23 +77,7 @@ export default class PrivatePage extends Component {
           <Button>
             <Link to="events/birthday">Birthday</Link>
           </Button>
-        </ButtonGroup>
-
-        {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Grid container justify="space-around">
-            <KeyboardDatePicker
-              margin="normal"
-              id="date-picker-dialog"
-              label="When is your event?"
-              format="MM/dd/yyyy"
-              // value={selectedDate}
-              // onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
-              }}
-            />
-          </Grid>
-        </MuiPickersUtilsProvider> */}
+        </ButtonGroup> */}
 
         <UpdateProfileForm />
 

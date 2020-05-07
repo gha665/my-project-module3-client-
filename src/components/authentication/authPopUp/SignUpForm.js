@@ -9,12 +9,14 @@ import { AuthContext } from "../../../context/Authorization";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
     },
   },
 }));
 
 export const SignUpForm = () => {
+  const classes = useStyles();
+
   return (
     <AuthContext.Consumer>
       {(context) => {
