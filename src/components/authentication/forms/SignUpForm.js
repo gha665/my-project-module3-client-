@@ -24,6 +24,7 @@ export const SignUpForm = () => {
 
         return (
           <div>
+            <h5>New to this? Create your profile!</h5>
             <form onSubmit={handleSignupSubmit} noValidate autoComplete="off">
               <Input
                 id="firstName"

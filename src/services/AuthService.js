@@ -6,10 +6,8 @@ const service = axios.create({
   withCredentials: true,
 });
 
-
 export const AUTH_SERVICE = {
   signup(userData) {
-    console.log('jidsjidsajidsa', {BASE_URL})
     return service.post("/api/auth/signup", userData);
   },
   login(userData) {

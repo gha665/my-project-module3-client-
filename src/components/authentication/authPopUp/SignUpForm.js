@@ -76,4 +76,3 @@ export const SignUpForm = () => {
 };
 
 export default SignUpForm;
-// SignUpForm.contextType = AuthContext .Consumer(???);

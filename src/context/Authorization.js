@@ -105,7 +105,6 @@ export class AuthProvider extends Component {
       const {
         data: { user },
       } = await AUTH_SERVICE.login(this.state.formLogin);
-      // console.log("AuthProvider -> handleLoginSubmit -> user", user);
 
       this.setState(
         (prevState) => ({
@@ -131,11 +130,7 @@ export class AuthProvider extends Component {
   //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   handleSignupInput = (e) => {
     const { value, name } = e.target;
-    // console.log(
-    //   "AuthProvider -> handleSignupInput -> value, name",
-    //   value,
-    //   name
-    // );
+
     this.setState((prevState) => ({
       formSignup: {
         ...prevState.formSignup,
@@ -148,7 +143,6 @@ export class AuthProvider extends Component {
   //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   handleLoginInput = (e) => {
     const { value, name } = e.target;
-    // console.log("AuthProvider -> handleLoginInput -> value, name", value, name);
     this.setState((prevState) => ({
       formLogin: {
         ...prevState.formLogin,
@@ -165,7 +159,6 @@ export class AuthProvider extends Component {
       // console.log("handleLOGOUT");
 
       const { message } = await AUTH_SERVICE.logout();
-      // console.log("AuthProvider -> isLoggedout -> user", message);
 
       this.setState({
         message,
@@ -173,8 +166,6 @@ export class AuthProvider extends Component {
       });
     } catch (err) {
       if (err.response && err.response.data) {
-        // console.log("MESSAGE", err.response.data.message);
-
         this.setState((prevState) => ({
           ...prevState,
           message: err.response.data.message,

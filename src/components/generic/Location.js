@@ -78,6 +78,7 @@ export default function Location() {
 
     fetch({ input: location }, (results) => {
       if (active) {
+        console.log("RESULTS", results);
         setLocationOptions(results);
       }
     });
@@ -88,56 +89,68 @@ export default function Location() {
   }, [location, fetch]);
 
   return (
-    <Grid container justify="space-around" mb={2}>
-      <Autocomplete
-        id="google-map-demo"
-        style={{ width: 300 }}
-        getOptionLabel={(option) =>
-          typeof option === "string" ? option : option.description
-        }
-        filterOptions={(x) => x}
-        options={locationOptions}
-        autoComplete
-        includeInputInList
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Where is your event?"
-            fullWidth
-            onChange={handleChange}
+    <PartyContext.Consumer>
+      {(context) => (
+        <Grid container justify="space-around" mb={2}>
+          <Autocomplete
+            id="google-map-demo"
+            style={{ width: 300 }}
+            getOptionLabel={(option) =>
+              typeof option === "string" ? option : option.description
+            }
+            filterOptions={(x) => x}
+            options={locationOptions}
+            autoComplete
+            includeInputInList
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label={
+                  context.state.location
+                    ? context.state.location
+                    : "Where is your event?"
+                }
+                fullWidth
+                value={context.state.location}
+                onChange={context.state.setLocation}
+              />
+            )}
+            renderOption={(option) => {
+              const matches =
+                option.structured_formatting.main_text_matched_substrings;
+              const parts = parse(
+                option.structured_formatting.main_text,
+                matches.map((match) => [
+                  match.offset,
+                  match.offset + match.length,
+                ])
+              );
+
+              return (
+                <Grid container alignItems="center">
+                  <Grid item>
+                    <LocationOnIcon className={classes.icon} />
+                  </Grid>
+                  <Grid item xs>
+                    {parts.map((part, index) => (
+                      <span
+                        key={index}
+                        style={{ fontWeight: part.highlight ? 700 : 400 }}
+                      >
+                        {part.text}
+                      </span>
+                    ))}
+
+                    <Typography variant="body2" color="textSecondary">
+                      {option.structured_formatting.secondary_text}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              );
+            }}
           />
-        )}
-        renderOption={(option) => {
-          const matches =
-            option.structured_formatting.main_text_matched_substrings;
-          const parts = parse(
-            option.structured_formatting.main_text,
-            matches.map((match) => [match.offset, match.offset + match.length])
-          );
-
-          return (
-            <Grid container alignItems="center">
-              <Grid item>
-                <LocationOnIcon className={classes.icon} />
-              </Grid>
-              <Grid item xs>
-                {parts.map((part, index) => (
-                  <span
-                    key={index}
-                    style={{ fontWeight: part.highlight ? 700 : 400 }}
-                  >
-                    {part.text}
-                  </span>
-                ))}
-
-                <Typography variant="body2" color="textSecondary">
-                  {option.structured_formatting.secondary_text}
-                </Typography>
-              </Grid>
-            </Grid>
-          );
-        }}
-      />
-    </Grid>
+        </Grid>
+      )}
+    </PartyContext.Consumer>
   );
 }

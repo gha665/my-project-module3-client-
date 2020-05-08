@@ -11,12 +11,10 @@ export default function HomePage() {
 
       <EventCards />
 
-      <h6>New to this? Create your profile!</h6>
-
       <SignUpForm />
 
       <footer>
-        <p>Evgenycs Dev Inc 2020</p>
+        <p>Made at Ironhack, Miami © 2020</p>
       </footer>
     </div>
   );

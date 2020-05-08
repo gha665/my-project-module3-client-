@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/Authorization";
 import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
 import EventCards from "../home/EventCards";
@@ -28,7 +28,7 @@ export default function PrivatePage() {
             <UpdateProfileForm />
 
             <footer>
-              <p>Evgenycs Dev Inc 2020</p>
+              <p>Made at Ironhack, Miami © 2020</p>
             </footer>
           </div>
         );
