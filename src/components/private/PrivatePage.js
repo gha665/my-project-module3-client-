@@ -2,98 +2,39 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/Authorization";
 import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
+import EventCards from "../home/EventCards";
 
-import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
-
-import { ButtonGroup, Button, Grid } from "@material-ui/core";
-
+import Button from "@material-ui/core/Button";
+import Avatar from "@material-ui/core/Avatar";
 // import "./App.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    justifyContent: "center",
-    "& > *": {
-      margin: theme.spacing(5),
-      width: theme.spacing(40),
-      height: theme.spacing(40),
-    },
-  },
-  conference: {
-    backgroundColor: "#a8d0e6",
-    border: "3px solid black",
-  },
-  wedding: {
-    backgroundColor: "#f8e9a1",
-    border: "3px solid black",
-  },
-  birthday: {
-    backgroundColor: "#f76c6c",
-    border: "3px solid black",
-  },
-}));
+export default function PrivatePage() {
+  return (
+    <AuthContext.Consumer>
+      {(context) => {
+        // ==================== Page is only displayed when user is logged in ========================
+        const { currentUser } = context.state;
+        const { handleLogout } = context;
 
-export default class PrivatePage extends Component {
-  render() {
-    // ==================== Page is only displayed when user is logged in ========================
-    const { currentUser } = this.context.state;
-    // const userFromLink = this.props.location.state?.userFromLink;
+        return (
+          <div>
+            <Avatar src={currentUser?.path} alt={currentUser?.firstName} />
+            <h1>HI, {currentUser?.firstName}! </h1>
 
-    const classes = useStyles();
+            <Button onClick={handleLogout}>Logout</Button>
 
-    return (
-      <div>
-        <h1>HI, {currentUser?.firstName}! </h1>
+            <EventCards />
 
-        <h1>PARTYARCH</h1>
+            <UpdateProfileForm />
 
-        <h3>What's your party?</h3>
-
-        <div className={classes.root}>
-          <Paper elevation={10} className={classes.conference}>
-            <Link to="events/conference">Conference</Link>
-            <br></br>
-            <img href="" alt="conference-icon"></img>
-          </Paper>
-          <Paper elevation={10} className={classes.wedding}>
-            <Link to="events/wedding">Wedding</Link>
-            <br></br>
-            <img href="" alt="wedding-icon"></img>
-          </Paper>
-          <Paper elevation={10} className={classes.birthday}>
-            <Link to="events/birthday">Birthday</Link>
-            <br></br>
-            <img href="" alt="birthday-icon"></img>
-          </Paper>
-        </div>
-
-        {/* <ButtonGroup
-          size="large"
-          color="primary"
-          aria-label="large outlined primary button group"
-        >
-          <Button>
-            <Link to="events/conference">Conference</Link>
-          </Button>
-          <Button>
-            <Link to="events/wedding">Wedding</Link>
-          </Button>
-          <Button>
-            <Link to="events/birthday">Birthday</Link>
-          </Button>
-        </ButtonGroup> */}
-
-        <UpdateProfileForm />
-
-        <footer>
-          <p>Evgenycs Dev Inc 2020</p>
-        </footer>
-      </div>
-    );
-  }
+            <footer>
+              <p>Evgenycs Dev Inc 2020</p>
+            </footer>
+          </div>
+        );
+      }}
+    </AuthContext.Consumer>
+  );
 }
 
 PrivatePage.contextType = AuthContext;

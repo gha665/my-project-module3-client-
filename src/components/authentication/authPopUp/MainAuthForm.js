@@ -15,7 +15,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 export function FormDialog(props) {
   console.log("FormDialog -> props", props);
   const [open, setOpen] = React.useState(false);
-  const [openForm, setOpenform] = React.useState(false);
+  const [switchForm, setSwitchForm] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -46,26 +46,25 @@ export function FormDialog(props) {
               onClose={handleClose}
               aria-labelledby="form-dialog-title"
             >
-              <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+              <DialogTitle id="form-dialog-title">
+                {!switchForm ? "Log in" : "Sign up"}
+              </DialogTitle>
               <DialogContent>
-                <DialogContentText>Sign up or log in</DialogContentText>
-                <LoginForm />
-                <SignUpForm />
-                {/* <TextField
-                  autoFocus
-                  margin="dense"
-                  id="name"
-                  label="Email Address"
-                  type="email"
-                  fullWidth
-                /> */}
+                <DialogContentText>Your event is a just few clicks away!</DialogContentText>
+                {!switchForm ? <LoginForm /> : <SignUpForm />}
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                  Cancel
+                {switchForm
+                  ? "Not logged in? Click here: "
+                  : "Not with us yet? Click here: "}
+                <Button
+                  onClick={() => setSwitchForm(!switchForm)}
+                  color="primary"
+                >
+                  {switchForm ? "Login" : "Sign Up"}
                 </Button>
                 <Button onClick={handleClose} color="primary">
-                  Switch
+                  Cancel
                 </Button>
               </DialogActions>
             </Dialog>

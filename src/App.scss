@@ -5,6 +5,18 @@
   text-align: center;
 }
 
+.step-container {
+  display: flex;
+
+  div {
+    margin: 20px auto 20px;
+  }
+}
+
+// .step-container > * {
+
+// }
+
 .conference {
   background-color: A8D0E6;
 }

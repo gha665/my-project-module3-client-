@@ -13,21 +13,26 @@ import "./App.scss";
 
 function App() {
   const [storage, setStorage] = useState({});
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   return (
     <AuthContext.Consumer>
       {(context) => {
         const { handleLogout, isLoggedIn, state } = context;
         const { currentUser, loggedIn, eventsData } = state;
+        
         console.log("App -> currentUser", currentUser);
         // console.log("App -> isLoggedIn", isLoggedIn())
         return (
           <div>
             <Container className="App">
-              <Link to="/homepage">HOME PAGE</Link>
+              {/* <Link to="/homepage">HOME PAGE</Link>
               <Link to="/privatepage">PRIVATE PAGE</Link>
               <button onClick={handleLogout}>LOGOUT</button>
-              {/* <HomePage /> */}
+              <HomePage /> */}
 
               <Switch>
                 <Route

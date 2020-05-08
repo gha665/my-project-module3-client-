@@ -30,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function Location() {
   const classes = useStyles();
   const [inputValue, setInputValue] = React.useState("");
