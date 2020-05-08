@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import { AuthContext } from "../../../context/Authorization";
+import { PartyContext } from "../../../context/Party";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
@@ -29,46 +30,52 @@ export function FormDialog(props) {
         const { loggedIn } = context.state;
 
         return (
-          <div>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => {
-                loggedIn
-                  ? props.history.push("/privatepage")
-                  : handleClickOpen();
-              }}
-            >
-              Check out
-            </Button>
-            <Dialog
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="form-dialog-title"
-            >
-              <DialogTitle id="form-dialog-title">
-                {!switchForm ? "Log in" : "Sign up"}
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText>Your event is a just few clicks away!</DialogContentText>
-                {!switchForm ? <LoginForm /> : <SignUpForm />}
-              </DialogContent>
-              <DialogActions>
-                {switchForm
-                  ? "Not logged in? Click here: "
-                  : "Not with us yet? Click here: "}
+          <PartyContext.Consumer>
+            {(partyContext) => (
+              <div>
                 <Button
-                  onClick={() => setSwitchForm(!switchForm)}
+                  variant="outlined"
                   color="primary"
+                  onClick={() => {
+                    loggedIn
+                      ? props.history.push("/privatepage")
+                      : handleClickOpen();
+                  }}
                 >
-                  {switchForm ? "Login" : "Sign Up"}
+                  Check out
                 </Button>
-                <Button onClick={handleClose} color="primary">
-                  Cancel
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </div>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="form-dialog-title"
+                >
+                  <DialogTitle id="form-dialog-title">
+                    {!switchForm ? "Log in" : "Sign up"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      Your event is a just few clicks away!
+                    </DialogContentText>
+                    {!switchForm ? <LoginForm /> : <SignUpForm />}
+                  </DialogContent>
+                  <DialogActions>
+                    {switchForm
+                      ? "Not logged in? Click here: "
+                      : "Not with us yet? Click here: "}
+                    <Button
+                      onClick={() => setSwitchForm(!switchForm)}
+                      color="primary"
+                    >
+                      {switchForm ? "Login" : "Sign Up"}
+                    </Button>
+                    <Button onClick={handleClose} color="primary">
+                      Cancel
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
+            )}
+          </PartyContext.Consumer>
         );
       }}
     </AuthContext.Consumer>

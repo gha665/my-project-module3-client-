@@ -39,12 +39,7 @@ function getSteps() {
 function getStepContent(stepIndex, props) {
   switch (stepIndex) {
     case 0:
-      return (
-        <DatePicker
-          selectedDate={props.selectedDate}
-          setSelectedDate={props.setSelectedDate}
-        />
-      );
+      return <DatePicker />;
     case 1:
       return <Location />;
     case 2:
@@ -58,15 +53,7 @@ function getStepContent(stepIndex, props) {
 
 export default function HorizontalLabelPositionBelowStepper(props) {
   console.log("KSDBJVJKSBDV", props);
-  const {
-    loggedIn,
-    setStorage,
-    user,
-    title,
-    events,
-    setSelectedDate,
-    selectedDate,
-  } = props;
+  const { loggedIn, setStorage, user, title, events } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();

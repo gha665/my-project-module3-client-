@@ -1,4 +1,5 @@
 import React from "react";
+import { PartyProvider, PartyContext } from "./../../context/Party";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -32,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Location() {
   const classes = useStyles();
-  const [inputValue, setInputValue] = React.useState("");
-  const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
+  const [location, setLocation] = React.useState("");
+  const [locationOptions, setLocationOptions] = React.useState([]);
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
@@ -49,7 +50,7 @@ export default function Location() {
   }
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    setLocation(event.target.value);
   };
 
   const fetch = React.useMemo(
@@ -70,21 +71,21 @@ export default function Location() {
       return undefined;
     }
 
-    if (inputValue === "") {
-      setOptions([]);
+    if (location === "") {
+      setLocationOptions([]);
       return undefined;
     }
 
-    fetch({ input: inputValue }, (results) => {
+    fetch({ input: location }, (results) => {
       if (active) {
-        setOptions(results || []);
+        setLocationOptions(results);
       }
     });
 
     return () => {
       active = false;
     };
-  }, [inputValue, fetch]);
+  }, [location, fetch]);
 
   return (
     <Grid container justify="space-around" mb={2}>
@@ -95,7 +96,7 @@ export default function Location() {
           typeof option === "string" ? option : option.description
         }
         filterOptions={(x) => x}
-        options={options}
+        options={locationOptions}
         autoComplete
         includeInputInList
         renderInput={(params) => (

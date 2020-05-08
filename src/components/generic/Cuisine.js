@@ -28,7 +28,7 @@ function Options(options) {
   });
 }
 
-function Cuisine() {
+function Cuisine({foodOptions}) {
   const classes = useStyles();
   return (
     <div>
