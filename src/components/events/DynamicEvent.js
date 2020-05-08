@@ -57,7 +57,16 @@ function getStepContent(stepIndex, props) {
 }
 
 export default function HorizontalLabelPositionBelowStepper(props) {
-  const { loggedIn, setStorage, user, title, events } = props;
+  console.log("KSDBJVJKSBDV", props);
+  const {
+    loggedIn,
+    setStorage,
+    user,
+    title,
+    events,
+    setSelectedDate,
+    selectedDate,
+  } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();

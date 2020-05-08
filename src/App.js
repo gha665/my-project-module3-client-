@@ -13,17 +13,16 @@ import "./App.scss";
 
 function App() {
   const [storage, setStorage] = useState({});
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
     <AuthContext.Consumer>
       {(context) => {
+        console.log("context", context);
         const { handleLogout, isLoggedIn, state } = context;
+        //console.log("SATTE", selectedDate, setSelectedDate);
         const { currentUser, loggedIn, eventsData } = state;
-        
+
         console.log("App -> currentUser", currentUser);
         // console.log("App -> isLoggedIn", isLoggedIn())
         return (
@@ -86,11 +85,14 @@ function App() {
                   render={(props) => (
                     <DynamicEvent
                       {...props}
+                      selectedDate={selectedDate}
+                      setSelectedDate={setSelectedDate}
                       // events={eventsData.birthday}
                       title="birthday"
                       user={currentUser}
                       setStorage={setStorage}
                       loggedIn={loggedIn}
+                      storage={storage}
                     />
                   )}
                 />
