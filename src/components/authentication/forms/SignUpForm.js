@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
@@ -54,6 +53,7 @@ export const SignUpForm = () => {
                 type="password"
                 name="password"
                 placeholder="Your password..."
+                autoComplete="current-password"
                 onChange={handleSignupInput}
                 value={password}
                 inputProps={{ "aria-label": "description" }}

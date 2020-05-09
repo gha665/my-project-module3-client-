@@ -21,10 +21,9 @@ export default function LoginForm(props) {
   return (
     <AuthContext.Consumer>
       {(context) => {
-        console.log(context);
         const { handleLoginSubmit, handleLoginInput, state } = context;
         const { email, password } = state.formLogin;
-        console.log("Login props", props);
+
         return (
           <div>
             <form onSubmit={handleLoginSubmit} classes={classes.root}>
@@ -42,6 +41,7 @@ export default function LoginForm(props) {
                 type="password"
                 name="password"
                 placeholder="Your password..."
+                autoComplete="current-password"
                 value={password}
                 onChange={handleLoginInput}
                 inputProps={{ "aria-label": "description" }}

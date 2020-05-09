@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { Container } from "@material-ui/core";
 
 import { AuthContext } from "./context/Authorization";
@@ -7,9 +7,7 @@ import PartyProvider from "./context/Party";
 import HomePage from "./components/home/HomePage";
 import PrivatePage from "./components/private/PrivatePage";
 import DynamicEvent from "./components/events/DynamicEvent";
-import Birthday from "./components/events/Birthday";
-// import Conference from "./components/events/Conference";
-// import Wedding from "./components/events/Wedding";
+
 import "./App.scss";
 
 function App() {
@@ -18,11 +16,8 @@ function App() {
   return (
     <AuthContext.Consumer>
       {(context) => {
-        const { handleLogout, isLoggedIn, state } = context;
-        const { currentUser, loggedIn, eventsData } = state;
-
-        console.log("App -> currentUser", currentUser);
-        // console.log("App -> isLoggedIn", isLoggedIn())
+        const { state } = context;
+        const { currentUser, loggedIn } = state;
 
         return (
           <div>
@@ -89,6 +84,7 @@ function App() {
                       />
                     )}
                   />
+                  <Redirect to="/homepage" />
                 </Switch>
               </Container>
             </PartyProvider>

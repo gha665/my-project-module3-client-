@@ -1,6 +1,6 @@
-import React, { Component, createContext } from "react";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import throttle from "lodash/throttle";
+import React, { createContext } from "react";
+// import Autocomplete from "@material-ui/lab/Autocomplete";
+// import throttle from "lodash/throttle";
 import EventServices from "./../services/EventServices";
 
 export const PartyContext = createContext();

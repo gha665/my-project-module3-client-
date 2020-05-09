@@ -28,8 +28,7 @@ export class AuthProvider extends Component {
   // ================ GET ALL EVENTS from DB
   getAllEvents = async () => {
     try {
-      const res = await EVENTS_SERVICE.getEvents();
-      console.log("AuthProvider -> getAllEvents -> res", res);
+      const res = await EVENTS_SERVICE.getEvents()
       this.setState({ eventsData: res.data.events });
     } catch (err) {
       console.log(err);
@@ -50,8 +49,6 @@ export class AuthProvider extends Component {
       });
     } catch (err) {
       if (err.response && err.response.data) {
-        console.log("MESSAGE", err.response.data.message);
-
         this.setState((prevState) => ({
           ...prevState,
           message: err.response.data.message,

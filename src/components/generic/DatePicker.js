@@ -1,7 +1,7 @@
 import React from "react";
-import { PartyProvider, PartyContext } from "./../../context/Party";
+import { PartyContext } from "./../../context/Party";
 import "../../App.scss";
-import { Grid } from "@material-ui/core";
+// import { Grid } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,

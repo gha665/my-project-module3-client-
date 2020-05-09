@@ -1,5 +1,5 @@
 import React from "react";
-import { PartyProvider, PartyContext } from "./../../context/Party";
+import { PartyContext } from "./../../context/Party";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
-import { spacing } from "@material-ui/system";
+// import { spacing } from "@material-ui/system";
 
 function loadScript(src, position, id) {
   if (!position) {
