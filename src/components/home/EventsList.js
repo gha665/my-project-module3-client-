@@ -35,7 +35,7 @@ class EventsList extends React.Component {
   componentDidMount() {
     EventServices.service.get("/api/events").then((response) => {
       this.setState({
-        eventsList: response.data,
+        eventsList: Array.isArray(response.data) ? response.data : [],
       });
     });
   }
