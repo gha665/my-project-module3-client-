@@ -1,5 +1,6 @@
 import React from "react";
 import addons from "../../data/addonSeeds";
+
 import Checkbox from "../Checkbox";
 
 export default function Addon() {
@@ -9,4 +10,3 @@ export default function Addon() {
     </div>
   );
 }
-

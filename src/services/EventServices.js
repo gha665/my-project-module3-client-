@@ -12,5 +12,6 @@ export const EVENTS_SERVICE = {
   getEvents() {
     return service.get(eventEndPoint);
   },
+  service: service,
 };
 export default EVENTS_SERVICE;

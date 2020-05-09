@@ -1,4 +1,5 @@
 import React from "react";
+import { PartyProvider, PartyContext } from "./../../context/Party";
 import MainAuthForm from "../authentication/authPopUp/MainAuthForm";
 
 import Cuisine from "../generic/Cuisine";
@@ -32,7 +33,7 @@ function getSteps() {
     "When is your event?",
     "Where is your event?",
     "Choose your cuisine",
-    "Choose your entertainment",
+    // "Choose your entertainment",
   ];
 }
 
@@ -44,22 +45,32 @@ function getStepContent(stepIndex, props) {
       return <Location />;
     case 2:
       return <Cuisine />;
-    case 3:
-      return <Addons />;
+    // case 3:
+    //   return <Addons />;
     default:
       return "Unknown stepIndex";
   }
 }
 
 export default function HorizontalLabelPositionBelowStepper(props) {
-  console.log("KSDBJVJKSBDV", props);
   const { loggedIn, setStorage, user, title, events } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+  const partyContext = React.useContext(PartyContext);
+
+  console.log("**title", title);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    let activeStep = 0;
+    setActiveStep((prevActiveStep) => {
+      return (activeStep = prevActiveStep + 1);
+    });
+    if (activeStep >= 3) {
+      // POST to API
+      partyContext.state.setEventType(title);
+      partyContext.state.createParty(title);
+    }
   };
 
   const handleBack = () => {

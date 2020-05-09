@@ -1,5 +1,6 @@
 import React from "react";
 import EventCards from "./EventCards";
+import EventsList from "./../home/EventsList";
 
 import SignUpForm from "../authentication/forms/SignUpForm";
 import LoginForm from "../authentication/forms/LoginForm";
@@ -10,6 +11,8 @@ export default function HomePage() {
       <LoginForm />
 
       <EventCards />
+
+      <EventsList />
 
       <SignUpForm />
 

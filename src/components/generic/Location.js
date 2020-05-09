@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Location() {
   const classes = useStyles();
   const loaded = React.useRef(false);
-  const [location, setLocation] = React.useState("");
   const [locationOptions, setLocationOptions] = React.useState([]);
+  const partyContext = React.useContext(PartyContext);
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
@@ -50,7 +50,8 @@ export default function Location() {
   }
 
   const handleChange = (event) => {
-    setLocation(event.target.value);
+    console.log("**location change", event.target.value);
+    partyContext.state.setLocation(event.target.value);
   };
 
   const fetch = React.useMemo(
@@ -71,12 +72,14 @@ export default function Location() {
       return undefined;
     }
 
-    if (location === "") {
+    console.log("** googleSearch fired!");
+
+    if (partyContext.state.location === "") {
       setLocationOptions([]);
       return undefined;
     }
 
-    fetch({ input: location }, (results) => {
+    fetch({ input: partyContext.state.location }, (results) => {
       if (active) {
         console.log("RESULTS", results);
         setLocationOptions(results);
@@ -86,7 +89,7 @@ export default function Location() {
     return () => {
       active = false;
     };
-  }, [location, fetch]);
+  }, [partyContext.state.location, fetch]);
 
   return (
     <PartyContext.Consumer>
@@ -102,17 +105,16 @@ export default function Location() {
             options={locationOptions}
             autoComplete
             includeInputInList
+            onInputChange={(event, newInputValue) => {
+              context.state.setLocation(newInputValue)
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label={
-                  context.state.location
-                    ? context.state.location
-                    : "Where is your event?"
-                }
+                label="Where is your event?"
                 fullWidth
                 value={context.state.location}
-                onChange={context.state.setLocation}
+                onChange={handleChange}
               />
             )}
             renderOption={(option) => {

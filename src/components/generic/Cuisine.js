@@ -6,6 +6,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
+import { PartyProvider, PartyContext } from "./../../context/Party";
 import foodData from "../../foodData.json";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,16 +29,26 @@ function Options(options) {
   });
 }
 
-function Cuisine({foodOptions}) {
+function Cuisine({ foodOptions }) {
   const classes = useStyles();
   return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <Select native defaultValue="" id="grouped-native-select">
-          <Options options={foodData} />
-        </Select>
-      </FormControl>
-    </div>
+    <PartyContext.Consumer>
+      {(context) => (
+        <div>
+          <FormControl className={classes.formControl}>
+            <Select
+              defaultValue=""
+              id="grouped-native-select"
+              value={context.state.cuisine ? context.state.cuisine : ""}
+              onChange={context.state.setSelectedCuisine}
+              native
+            >
+              <Options options={foodData} />
+            </Select>
+          </FormControl>
+        </div>
+      )}
+    </PartyContext.Consumer>
   );
 }
 

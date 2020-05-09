@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(40),
       height: theme.spacing(40),
     },
+    textDecoration: "none"
   },
   conference: {
     backgroundColor: "#a8d0e6",
