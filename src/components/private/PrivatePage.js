@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { AuthContext } from "../../context/Authorization";
 import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
 import EventCards from "../home/EventCards";
+import EventsList from "../home/EventsList";
 
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
@@ -25,7 +26,9 @@ export default function PrivatePage() {
 
             <EventCards />
 
-            <UpdateProfileForm />
+            <EventsList />
+
+            {/* <UpdateProfileForm /> */}
 
             <footer>
               <p>Made at Ironhack, Miami © 2020</p>

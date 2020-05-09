@@ -12,6 +12,9 @@ export const EVENTS_SERVICE = {
   getEvents() {
     return service.get(eventEndPoint);
   },
+  deleteEvent(id) {
+    return service.post(`/api/events/event/delete/${id}`);
+  },
   service: service,
 };
 export default EVENTS_SERVICE;

@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import EventServices from "./../../services/EventServices";
+import { PartyContext } from "../../context/Party";
 
 const styles = (theme) => ({
   root: {
@@ -41,38 +42,51 @@ class EventsList extends React.Component {
     });
   }
 
+  deleteEvent = (index, id) => {
+    EventServices.deleteEvent(id).then(response => {
+      let updatedEvents = [...this.state.eventsList];
+      updatedEvents.splice(index, 1);
+      this.setState({
+        eventsList: updatedEvents
+      })
+    }).catch(err => console.log(err))
+  }
+
   render() {
     const { classes } = this.props;
 
     const bull = <span className={classes.bullet}>•</span>;
 
     return (
-      <div>
-        <h3>Upcoming Events</h3>
-
-        {this.state.eventsList.map((event) => {
-          return (
-            <Card className={classes.root} variant="outlined">
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                    { event.eventType.toUpperCase() }
-                </Typography>
-                <Typography variant="h5" component="h2">
-                  { new Date(event.date).toDateString() }
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  { event.food }
-                </Typography>
-            
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
+      <PartyContext.Consumer>
+        {(context) => {
+          return <div>
+            <h3>Upcoming Events</h3>
+            {this.state.eventsList.map((event, i) => {
+              return (
+                <Card className={classes.root} variant="outlined">
+                  <CardContent>
+                    <Typography
+                      className={classes.title}
+                      color="textSecondary"
+                      gutterBottom
+                    >
+                      {event.eventType.toUpperCase()}
+                    </Typography>
+                    <Typography variant="h5" component="h2">
+                      {new Date(event.date).toDateString()}
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+                      {event.food}
+                    </Typography>
+                    <Button onClick={() => this.deleteEvent(i,event._id)}>Delete</Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>;
+        }}
+      </PartyContext.Consumer>
     );
   }
 }
