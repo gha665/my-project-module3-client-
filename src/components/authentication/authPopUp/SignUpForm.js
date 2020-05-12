@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+
 
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
@@ -15,12 +15,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SignUpForm = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <AuthContext.Consumer>
       {(context) => {
-        // console.log("SignUpForm -> context", context);
         const { handleSignupSubmit, handleSignupInput, state } = context;
         const { firstName, lastName, email, password } = state.formSignup;
 

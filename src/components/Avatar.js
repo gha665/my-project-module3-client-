@@ -46,5 +46,7 @@ export default function ImageAvatars({ size, src }) {
           <Avatar alt={src} variant="rounded" src={src} className={classes.large} />
         </div>
       );
+    default: 
+    return null;
   }
 }

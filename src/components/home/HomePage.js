@@ -1,6 +1,7 @@
 import React from "react";
 import EventCards from "./EventCards";
 import EventsList from "./../home/EventsList";
+import Footer from "../Footer";
 
 import SignUpForm from "../authentication/forms/SignUpForm";
 import LoginForm from "../authentication/forms/LoginForm";
@@ -16,9 +17,7 @@ export default function HomePage() {
 
       <SignUpForm />
 
-      <footer>
-        <p>Made at Ironhack, Miami © 2020</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

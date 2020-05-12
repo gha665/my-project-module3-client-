@@ -5,13 +5,13 @@ import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { AuthContext } from "../../../context/Authorization";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     "& > *": {
+//       margin: theme.spacing(1),
+//     },
+//   },
+// }));
 
 export const SignUpForm = () => {
   return (

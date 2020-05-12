@@ -1,11 +1,12 @@
 import React from "react";
-import { PartyProvider, PartyContext } from "./../../context/Party";
+import { PartyContext } from "./../../context/Party";
 import MainAuthForm from "../authentication/authPopUp/MainAuthForm";
 
 import Cuisine from "../generic/Cuisine";
 import DatePicker from "../generic/DatePicker";
 import Location from "../generic/Location";
-import Addons from "../generic/Addons";
+// import Addons from "../generic/Addons";
+import Footer from "../Footer";
 import "../../App.scss";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -53,13 +54,11 @@ function getStepContent(stepIndex, props) {
 }
 
 export default function HorizontalLabelPositionBelowStepper(props) {
-  const { loggedIn, setStorage, user, title, events } = props;
+  const { title } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const partyContext = React.useContext(PartyContext);
-
-  console.log("**title", title);
 
   const handleNext = () => {
     let activeStep = 0;
@@ -131,6 +130,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

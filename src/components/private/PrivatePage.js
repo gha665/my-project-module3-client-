@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import React from "react";
 import { AuthContext } from "../../context/Authorization";
-import UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
+// mport UpdateProfileForm from "../authentication/forms/UpdateProfileForm";
 import EventCards from "../home/EventCards";
 import EventsList from "../home/EventsList";
+import Footer from "../Footer";
 
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
-// import "./App.css";
 
 export default function PrivatePage() {
   return (
@@ -30,9 +29,7 @@ export default function PrivatePage() {
 
             {/* <UpdateProfileForm /> */}
 
-            <footer>
-              <p>Made at Ironhack, Miami © 2020</p>
-            </footer>
+            <Footer />
           </div>
         );
       }}

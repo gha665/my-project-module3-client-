@@ -44,8 +44,6 @@ class PartyProvider extends React.Component {
     },
 
     createParty: (eventType) => {
-      console.log("**POST /events", this.state);
-
       EventServices.service
         .post("/api/events", {
           eventType: eventType,
