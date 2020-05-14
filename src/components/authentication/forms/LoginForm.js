@@ -25,7 +25,7 @@ export default function LoginForm(props) {
         const { email, password } = state.formLogin;
 
         return (
-          <div>
+          <div >
             <form onSubmit={handleLoginSubmit} classes={classes.root}>
               <Input
                 className={classes.input}

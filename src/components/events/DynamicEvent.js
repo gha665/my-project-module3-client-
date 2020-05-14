@@ -5,7 +5,7 @@ import MainAuthForm from "../authentication/authPopUp/MainAuthForm";
 import Cuisine from "../generic/Cuisine";
 import DatePicker from "../generic/DatePicker";
 import Location from "../generic/Location";
-// import Addons from "../generic/Addons";
+import Addons from "../generic/Addons";
 import Footer from "../Footer";
 import "../../App.scss";
 
@@ -34,7 +34,7 @@ function getSteps() {
     "When is your event?",
     "Where is your event?",
     "Choose your cuisine",
-    // "Choose your entertainment",
+    "Choose your entertainment",
   ];
 }
 
@@ -46,8 +46,8 @@ function getStepContent(stepIndex, props) {
       return <Location />;
     case 2:
       return <Cuisine />;
-    // case 3:
-    //   return <Addons />;
+    case 3:
+      return <Addons />;
     default:
       return "Unknown stepIndex";
   }
